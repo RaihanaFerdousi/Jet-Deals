@@ -1,0 +1,100 @@
+{
+  "tickets": [
+    {
+      "origin": "JFK",
+      "destination": "LHR",
+      "price": 328,
+      "dateRange": "June 12–20",
+      "airline": "Airway Express",
+      "score": "Great"
+    },
+    {
+      "origin": "LAX",
+      "destination": "CDG",
+      "price": 412,
+      "dateRange": "July 5–15",
+      "airline": "SkyRoute Airlines",
+      "score": "Good"
+    },
+    {
+      "origin": "SFO",
+      "destination": "NRT",
+      "price": 598,
+      "dateRange": "August 10–22",
+      "airline": "Pacific Wings",
+      "score": "Good"
+    },
+    {
+      "origin": "JFK",
+      "destination": "BCN",
+      "price": 375,
+      "dateRange": "September 8–18",
+      "airline": "Airway Express",
+      "score": "Amazing"
+    },
+    {
+      "origin": "ORD",
+      "destination": "FCO",
+      "price": 456,
+      "dateRange": "June 20–30",
+      "airline": "TransAtlantic Air",
+      "score": "Great"
+    },
+    {
+      "origin": "MIA",
+      "destination": "CUN",
+      "price": 199,
+      "dateRange": "July 15–22",
+      "airline": "SunJet",
+      "score": "Amazing"
+    },
+    {
+      "origin": "BOS",
+      "destination": "DUB",
+      "price": 389,
+      "dateRange": "August 5–15",
+      "airline": "EmeraldSky",
+      "score": "Great"
+    },
+    {
+      "origin": "SEA",
+      "destination": "HKG",
+      "price": 678,
+      "dateRange": "September 12–25",
+      "airline": "Pacific Wings",
+      "score": "Good"
+    },
+    {
+      "origin": "DFW",
+      "destination": "MEX",
+      "price": 245,
+      "dateRange": "July 8–15",
+      "airline": "SunJet",
+      "score": "Great"
+    },
+    {
+      "origin": "ATL",
+      "destination": "LIS",
+      "price": 499,
+      "dateRange": "August 18–28",
+      "airline": "TransAtlantic Air",
+      "score": "Good"
+    },
+    {
+      "origin": "JFK",
+      "destination": "TYO",
+      "price": 799,
+      "dateRange": "June 15–30",
+      "airline": "Pacific Wings",
+      "score": "Good"
+    },
+    {
+      "origin": "LAX",
+      "destination": "SYD",
+      "price": 899,
+      "dateRange": "July 10–25",
+      "airline": "OceanicAir",
+      "score": "Amazing"
+    }
+  ]
+}

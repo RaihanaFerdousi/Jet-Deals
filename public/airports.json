@@ -1,0 +1,17 @@
+{
+    "origins": [
+      { "code": "JFK", "name": "New York (JFK)" },
+      { "code": "LAX", "name": "Los Angeles (LAX)" },
+      { "code": "LHR", "name": "London Heathrow (LHR)" },
+      { "code": "DXB", "name": "Dubai International (DXB)" },
+      { "code": "HND", "name": "Tokyo Haneda (HND)" }
+    ],
+    "destinations": [
+      { "code": "CDG", "name": "Paris Charles de Gaulle (CDG)" },
+      { "code": "SIN", "name": "Singapore Changi (SIN)" },
+      { "code": "SYD", "name": "Sydney Kingsford Smith (SYD)" },
+      { "code": "DEL", "name": "Delhi Indira Gandhi (DEL)" },
+      { "code": "YYZ", "name": "Toronto Pearson (YYZ)" }
+    ]
+  }
+  
