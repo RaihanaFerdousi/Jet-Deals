@@ -24,7 +24,7 @@ const Home = () => {
   useEffect(() => {
     fetch("/tickets.json")
       .then((res) => res.json())
-      .then((data) => setTickets(data.tickets)) // instead of setTickets(data)
+      .then((data) => setTickets(data.tickets))
       .catch((err) => console.error("Failed to fetch tickets:", err));
   }, []);
   

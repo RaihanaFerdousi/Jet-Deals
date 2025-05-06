@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { ArrowLeft, Heart, Plane } from "lucide-react";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { MdOutlineCalendarToday } from "react-icons/md";
+import { FaDollarSign } from "react-icons/fa";
+import { CiCircleAlert } from "react-icons/ci";
+import { useSavedDeals } from "../../SavedDealsContext";
 
 interface Ticket {
   origin: string;
@@ -9,6 +13,7 @@ interface Ticket {
   dateRange: string;
   airline: string;
   score: string;
+  travelTips?: string[];
 }
 
 interface SearchResultsProps {
@@ -28,6 +33,15 @@ const SearchResults: React.FC<SearchResultsProps> = ({
 }) => {
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const [selectedTicket, setSelectedTicket] = useState<Ticket | null>(null);
+  const { saveDeal, deleteDeal, savedDeals } = useSavedDeals();
+
+  const handleSaveDeal = (ticket: Ticket) => {
+    saveDeal(ticket);
+  };
+
+  const handleDeleteDeal = (ticket: Ticket) => {
+    deleteDeal(ticket);
+  };
 
   const filteredTickets = tickets
     .filter((ticket) => {
@@ -128,9 +142,42 @@ const SearchResults: React.FC<SearchResultsProps> = ({
                       >
                         {ticket.score} Deal
                       </span>
-                      <button className="text-black hover:text-gray-400 transition-colors">
+                      <button
+                        onClick={() => handleSaveDeal(ticket)}
+                        className={`p-1 rounded-full transition-colors ${
+                          savedDeals.some(
+                            (deal) =>
+                              deal.origin === ticket.origin &&
+                              deal.destination === ticket.destination &&
+                              deal.price === ticket.price &&
+                              deal.airline == ticket.airline &&
+                              deal.dateRange == ticket.dateRange &&
+                              deal.score == ticket.score &&
+                              deal.travelTips == ticket.travelTips
+                          )
+                            ? "text-rose-600"
+                            : "text-black hover:text-gray-400"
+                        }`}
+                      >
                         <Heart className="w-5 h-5" />
                       </button>
+                      {savedDeals.some(
+                        (deal) =>
+                          deal.origin === ticket.origin &&
+                          deal.destination === ticket.destination &&
+                          deal.price === ticket.price &&
+                          deal.airline == ticket.airline &&
+                          deal.dateRange == ticket.dateRange &&
+                          deal.score == ticket.score &&
+                          deal.travelTips == ticket.travelTips
+                      ) && (
+                        <button
+                          onClick={() => handleDeleteDeal(ticket)}
+                          className="p-1 rounded-full text-red-600 hover:text-red-800"
+                        >
+                          <CiCircleAlert className="w-5 h-5" />
+                        </button>
+                      )}
                     </div>
                   </div>
 
@@ -165,55 +212,141 @@ const SearchResults: React.FC<SearchResultsProps> = ({
                     </div>
                   </div>
                   {selectedTicket && (
-  <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-    <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6 relative">
-      {/* Close Button */}
+                    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+                      <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6 relative">
+                        <div className="flex justify-between">
+                          <div>
+                            <h1 className="text-[20px] font-semibold text-gray-900">
+                              Flight Details
+                            </h1>
+                            <p className="text-sm font-medium text-gray-500">
+                              {selectedTicket.airline}
+                              <span className="text-xl font-bold"> • </span>
+                              {selectedTicket.dateRange}
+                            </p>
+                          </div>
 
+                          <span
+                            className={`px-3 py-1 h-[29px] rounded-full text-sm font-medium ${getDealTypeClass(
+                              selectedTicket.score
+                            )}`}
+                          >
+                            {selectedTicket.score} Deal
+                          </span>
+                        </div>
 
-      {/* Modal Content */}
-      <div className="flex justify-between">
-        <div>
-          <h1 className="text-[20px] font-semibold text-gray-900">
-            Flight Details
-          </h1>
-          <p className="text-sm font-medium text-gray-500">
-            {selectedTicket.airline}
-            <span className="text-xl font-bold"> • </span>
-            {selectedTicket.dateRange}
-          </p>
-        </div>
+                        <div className="flex items-center justify-between mt-4 bg-[#f1f5f9] p-4 rounded-xl">
+                          <div className="text-[26px] flex flex-col items-center font-bold text-gray-900">
+                            <span className="text-sm font-semibold text-gray-500">
+                              From
+                            </span>
+                            {selectedTicket.origin}
+                          </div>
+                          <Plane className="w-5 h-5 text-gray-400 mx-4" />
+                          <div className="text-[26px] flex flex-col items-center font-bold text-gray-900">
+                            <span className="text-sm font-semibold text-gray-500">
+                              To
+                            </span>
+                            {selectedTicket.destination}
+                          </div>
+                        </div>
+                        <div className="flex justify-between gap-4 my-4">
+                          <div className="flex w-1/2 items-center gap-3 border border-gray-200 px-3 py-1 rounded-lg border-solid">
+                            <div>
+                              <MdOutlineCalendarToday className="text-[#14b8a6] text-xl hover:text-[#3e756f]" />
+                            </div>
+                            <div className="space-y-1">
+                              <span className="text-sm text-gray-500">
+                                Date
+                              </span>
+                              <p className="text-lg font-semibold text-gray-900">
+                                {selectedTicket.dateRange}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="flex w-1/2 items-center gap-3 border border-gray-200 px-3 py-1 rounded-lg border-solid">
+                            <div>
+                              <FaDollarSign className="text-[#14b8a6] text-xl hover:text-[#3e756f]" />
+                            </div>
+                            <div className="space-y-1">
+                              <span className="text-sm text-gray-500">
+                                Price
+                              </span>
+                              <p className="text-lg font-semibold text-gray-900">
+                                ${selectedTicket.price}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="border border-gray-200 rounded-md p-3 mb-5">
+                          <h1 className="flex items-center gap-3 font-semibold mb-2">
+                            <CiCircleAlert className="text-[#14b8a6] text-xl hover:text-[#3e756f]" />
+                            <span className="text-xl">Travel Tips</span>
+                          </h1>
+                          <ul className="list-disc p-2 list-inside text-gray-500 space-y-1 ml-2">
+                            {selectedTicket.travelTips &&
+                            selectedTicket.travelTips.length > 0 ? (
+                              selectedTicket.travelTips.map((tip, idx) => (
+                                <li key={idx} className="text-sm">
+                                  {tip}
+                                </li>
+                              ))
+                            ) : (
+                              <li className="text-sm text-gray-400">
+                                No tips available for this flight.
+                              </li>
+                            )}
+                          </ul>
+                        </div>
+                        <div className="flex justify-between">
+                          <button
+                            onClick={() => setSelectedTicket(null)}
+                            className="mt-2 px-6 py-2 border font-semibold border-gray-200 text-md hover:bg-gray-100"
+                            aria-label="Close"
+                          >
+                            Back to results
+                          </button>
 
-        <span
-          className={`px-3 py-1 h-[29px] rounded-full text-sm font-medium ${getDealTypeClass(
-            selectedTicket.score
-          )}`}
-        >
-          {selectedTicket.score} Deal
-        </span>
-      </div>
-
-      <div className="flex items-center justify-between mt-4 bg-[#f1f5f9] p-4 rounded-xl">
-        <div className="text-[26px] flex flex-col items-center font-bold text-gray-900">
-          <span className="text-sm font-semibold text-gray-500">From</span>
-          {selectedTicket.origin}
-        </div>
-        <Plane className="w-5 h-5 text-gray-400 mx-4" />
-        <div className="text-[26px] flex flex-col items-center font-bold text-gray-900">
-          <span className="text-sm font-semibold text-gray-500">To</span>
-          {selectedTicket.destination}
-        </div>
-      </div>
-      <button
-        onClick={() => setSelectedTicket(null)}
-        className="mt-2 btn text-lg"
-        aria-label="Close"
-      >
-        Close
-      </button>
-    </div>
-  </div>
-)}
-
+                          <button
+                        onClick={() => handleSaveDeal(ticket)}
+                        className={`mt-2 flex items-center gap-2 px-6 py-2 border font-semibold border-gray-200 text-m transition-colors ${
+                          savedDeals.some(
+                            (deal) =>
+                              deal.origin === ticket.origin &&
+                              deal.destination === ticket.destination &&
+                              deal.price === ticket.price &&
+                              deal.airline == ticket.airline &&
+                              deal.dateRange == ticket.dateRange &&
+                              deal.score == ticket.score &&
+                              deal.travelTips == ticket.travelTips
+                          )
+                            ? "text-rose-600"
+                            : "text-black hover:text-gray-400"
+                        }`}
+                      >
+                        <Heart className="w-4 h-4" /> Save Deal
+                      </button>
+                      {savedDeals.some(
+                        (deal) =>
+                          deal.origin === ticket.origin &&
+                          deal.destination === ticket.destination &&
+                          deal.price === ticket.price &&
+                          deal.airline == ticket.airline &&
+                          deal.dateRange == ticket.dateRange &&
+                          deal.score == ticket.score &&
+                          deal.travelTips == ticket.travelTips
+                      ) && (
+                        <button
+                          onClick={() => handleDeleteDeal(ticket)}
+                          className="p-1 rounded-full text-red-600 hover:text-red-800"
+                        >
+                          <CiCircleAlert className="w-5 h-5" />
+                        </button>
+                      )}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

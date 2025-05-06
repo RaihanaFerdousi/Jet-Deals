@@ -7,6 +7,9 @@ import {
 } from "react-router-dom";
 import Main from './Pages/Main/Main';
 import Home from './Pages/Home/Home';
+import SavedDeals from './Component\'s/SavedDeals/SavedDeals';
+import { SavedDealsProvider } from './SavedDealsContext';
+import SearchResults from './Component\'s/Search/SearchResults';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +19,14 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home/>
+      },
+      {
+        path: '/searchResults',
+        element: <SearchResults/>
+      },
+      {
+        path: '/savedDeals',
+        element: <SavedDeals/>
       }
     ]
   },
@@ -23,6 +34,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-   <RouterProvider router={router} />
+   <SavedDealsProvider>
+      <RouterProvider router={router} />
+   </SavedDealsProvider>
   </StrictMode>,
 )

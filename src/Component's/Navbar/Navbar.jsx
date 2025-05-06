@@ -3,6 +3,7 @@ import { IoIosHeartEmpty } from "react-icons/io";
 import { IoSunnyOutline } from "react-icons/io5";
 import { GoMoon } from "react-icons/go";
 import { IoMdJet } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -15,16 +16,17 @@ const Navbar = () => {
 
   return (
     <nav className="navbar bg-base-100 shadow-sm px-10">
-      <div className="flex items-center gap-3 flex-1">
+      <Link to='/' className="flex items-center gap-3 flex-1">
       <IoMdJet className="text-xl text-teal-500"/>
         <span className="text-xl font-semibold">JetDeals</span>
-      </div>
+      </Link>
 
       <div className="flex items-center gap-2">
-        <button className="btn btn-ghost border-none flex items-center gap-2">
+        <Link to="/savedDeals" className="btn btn-ghost border-none flex items-center gap-2">
           <IoIosHeartEmpty className="text-lg" />
           <span>Saved Deals</span>
-        </button>
+        </Link>
+        
 
         <label className="swap swap-rotate cursor-pointer">
           <input

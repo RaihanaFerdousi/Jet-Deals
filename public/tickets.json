@@ -6,7 +6,11 @@
       "price": 328,
       "dateRange": "June 12–20",
       "airline": "Airway Express",
-      "score": "Great"
+      "score": "Great",
+      "travelTips": [
+        "Arrive at the airport 3 hours early for international flights.",
+        "Carry a universal power adapter for UK plugs."
+      ]
     },
     {
       "origin": "LAX",
@@ -14,7 +18,11 @@
       "price": 412,
       "dateRange": "July 5–15",
       "airline": "SkyRoute Airlines",
-      "score": "Good"
+      "score": "Good",
+      "travelTips": [
+        "Learn a few basic French phrases to ease communication.",
+        "Pre-book museum tickets to avoid long lines in Paris."
+      ]
     },
     {
       "origin": "SFO",
@@ -22,7 +30,11 @@
       "price": 598,
       "dateRange": "August 10–22",
       "airline": "Pacific Wings",
-      "score": "Good"
+      "score": "Good",
+      "travelTips": [
+        "Get a Japan Rail Pass before you travel to save on trains.",
+        "Carry cash — many places in Japan don’t accept cards."
+      ]
     },
     {
       "origin": "JFK",
@@ -30,7 +42,11 @@
       "price": 375,
       "dateRange": "September 8–18",
       "airline": "Airway Express",
-      "score": "Amazing"
+      "score": "Amazing",
+      "travelTips": [
+        "Visit famous spots like Sagrada Família early in the day.",
+        "Watch out for pickpockets in busy tourist areas."
+      ]
     },
     {
       "origin": "ORD",
@@ -38,7 +54,11 @@
       "price": 456,
       "dateRange": "June 20–30",
       "airline": "TransAtlantic Air",
-      "score": "Great"
+      "score": "Great",
+      "travelTips": [
+        "Wear comfy shoes — Rome has lots of cobbled streets.",
+        "Always carry a reusable water bottle; fountains are everywhere."
+      ]
     },
     {
       "origin": "MIA",
@@ -46,7 +66,11 @@
       "price": 199,
       "dateRange": "July 15–22",
       "airline": "SunJet",
-      "score": "Amazing"
+      "score": "Amazing",
+      "travelTips": [
+        "Apply sunscreen frequently — Cancun sun is strong.",
+        "Book excursions early to avoid last-minute price hikes."
+      ]
     },
     {
       "origin": "BOS",
@@ -54,7 +78,11 @@
       "price": 389,
       "dateRange": "August 5–15",
       "airline": "EmeraldSky",
-      "score": "Great"
+      "score": "Great",
+      "travelTips": [
+        "Pack a light raincoat — Irish weather can be unpredictable.",
+        "Use contactless cards or Apple Pay for fast bus access."
+      ]
     },
     {
       "origin": "SEA",
@@ -62,7 +90,11 @@
       "price": 678,
       "dateRange": "September 12–25",
       "airline": "Pacific Wings",
-      "score": "Good"
+      "score": "Good",
+      "travelTips": [
+        "Download offline maps of Hong Kong before you go.",
+        "Try the Octopus Card for cheap, easy transport."
+      ]
     },
     {
       "origin": "DFW",
@@ -70,7 +102,11 @@
       "price": 245,
       "dateRange": "July 8–15",
       "airline": "SunJet",
-      "score": "Great"
+      "score": "Great",
+      "travelTips": [
+        "Avoid drinking tap water; stick to bottled.",
+        "Use authorized taxis or apps like Uber for safety."
+      ]
     },
     {
       "origin": "ATL",
@@ -78,7 +114,11 @@
       "price": 499,
       "dateRange": "August 18–28",
       "airline": "TransAtlantic Air",
-      "score": "Good"
+      "score": "Good",
+      "travelTips": [
+        "Lisbon is hilly — pack comfortable walking shoes.",
+        "Try the famous Pastel de Nata at local bakeries."
+      ]
     },
     {
       "origin": "JFK",
@@ -86,7 +126,11 @@
       "price": 799,
       "dateRange": "June 15–30",
       "airline": "Pacific Wings",
-      "score": "Good"
+      "score": "Good",
+      "travelTips": [
+        "Respect local etiquette — bowing is a polite greeting.",
+        "Convenience stores have great, cheap meals."
+      ]
     },
     {
       "origin": "LAX",
@@ -94,7 +138,11 @@
       "price": 899,
       "dateRange": "July 10–25",
       "airline": "OceanicAir",
-      "score": "Amazing"
+      "score": "Amazing",
+      "travelTips": [
+        "Australia has strict customs — declare everything.",
+        "Remember the sun is strong; wear sunscreen daily."
+      ]
     }
   ]
 }
