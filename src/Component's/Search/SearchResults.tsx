@@ -165,48 +165,55 @@ const SearchResults: React.FC<SearchResultsProps> = ({
                     </div>
                   </div>
                   {selectedTicket && (
-                    <div className="fixed inset-0 bg-neutral-800  z-50 flex items-center justify-center">
-                      <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6 relative">
-                        <div className="flex justify-between mb-3">
-                          <div>
-                            <h1 className="text-[20px] font-semibold text-gray-900">
-                              Flight Details
-                            </h1>
-                            <p className="text text-sm font-medium text-gray-500 flex-gray-600">
-                              {ticket.airline}
-                              <span className="text-xl font-bold"> . </span>
-                              {ticket.dateRange}
-                            </p>
-                          </div>
+  <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+    <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6 relative">
+      {/* Close Button */}
 
-                          <div className="flex ">
-                            <span
-                              className={`px-3 py-1 rounded-full text-sm ${getDealTypeClass(
-                                ticket.score
-                              )}`}
-                            >
-                              {ticket.score} Deal
-                            </span>
-                          </div>
-                        </div>
-                        <div className="flex items-center justify-between mt-4 bg-[#f1f5f9] p-4 rounded-xl">
-                      <div>
-                        <div className="text-[26px] flex flex-col items-center font-bold text-gray-900">
-                          <span className="text-sm font-semibold text-gray-500">From</span>
-                          {ticket.origin}
-                        </div>
-                      </div>
-                      <Plane className="w-5 h-5 text-gray-400 mx-4" />
-                      <div className="text-right">
-                        <div className="text-[26px] flex flex-col items-center font-bold text-gray-900">
-                          <span className="text-sm font-semibold text-gray-500">To</span>
-                          {ticket.destination}
-                        </div>
-                      </div>
-                    </div>
-                      </div>
-                    </div>
-                  )}
+
+      {/* Modal Content */}
+      <div className="flex justify-between">
+        <div>
+          <h1 className="text-[20px] font-semibold text-gray-900">
+            Flight Details
+          </h1>
+          <p className="text-sm font-medium text-gray-500">
+            {selectedTicket.airline}
+            <span className="text-xl font-bold"> • </span>
+            {selectedTicket.dateRange}
+          </p>
+        </div>
+
+        <span
+          className={`px-3 py-1 h-[29px] rounded-full text-sm font-medium ${getDealTypeClass(
+            selectedTicket.score
+          )}`}
+        >
+          {selectedTicket.score} Deal
+        </span>
+      </div>
+
+      <div className="flex items-center justify-between mt-4 bg-[#f1f5f9] p-4 rounded-xl">
+        <div className="text-[26px] flex flex-col items-center font-bold text-gray-900">
+          <span className="text-sm font-semibold text-gray-500">From</span>
+          {selectedTicket.origin}
+        </div>
+        <Plane className="w-5 h-5 text-gray-400 mx-4" />
+        <div className="text-[26px] flex flex-col items-center font-bold text-gray-900">
+          <span className="text-sm font-semibold text-gray-500">To</span>
+          {selectedTicket.destination}
+        </div>
+      </div>
+      <button
+        onClick={() => setSelectedTicket(null)}
+        className="mt-2 btn text-lg"
+        aria-label="Close"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
+
                 </div>
               </div>
             ))}
