@@ -7,13 +7,13 @@ import { CiCircleAlert } from "react-icons/ci";
 import { useSavedDeals } from "../../SavedDealsContext";
 
 interface Ticket {
-  origin: string;
+   origin: string;
   destination: string;
+  airline: string;
   price: number;
   dateRange: string;
-  airline: string;
-  score: string;
-  travelTips?: string[];
+  score: "Hot" | "Good" | "Fair" | string;
+  travelTips: string[];
 }
 
 interface SearchResultsProps {
@@ -54,7 +54,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
     .sort((a, b) => {
       return sortOrder === "asc" ? a.price - b.price : b.price - a.price;
     });
-
+    
   const getDealTypeClass = (score: string) => {
     switch (score) {
       case "Amazing":

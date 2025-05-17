@@ -64,7 +64,7 @@ const TravelBanner: React.FC<TravelBannerProps> = ({ onSearch }) => {
             Discover amazing flight deals to destinations worldwide. Search by
             flexible dates and budget.
           </p>
-        </div>
+        </div> 
 
         <div className="bg-white p-8 rounded-lg shadow-md">
           <div className="flex items-center justify-center gap-2 mb-6">
